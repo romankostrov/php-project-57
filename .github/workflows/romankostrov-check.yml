@@ -1,0 +1,55 @@
+name: asd1xx-check
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_DB: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+        ports:
+          - 5432:5432
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: php
+        uses: shivammathur/setup-php@v2 
+        with:
+          php-version: '8.3'
+
+      - name: env
+        run: make env
+
+      - name: composer
+        run: make install
+
+      - name: key
+        run: make key
+
+      - name: db
+        run: make db
+
+      - name: frontend
+        run: make frontend
+
+      - name: validate
+        run: make validate
+
+      - name: linter
+        run: make lint
+      
+      - name: Run test & publish code coverage
+        uses: paambaati/codeclimate-action@v5
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          coverageCommand: make test-coverage
+          coverageLocations: build/logs/clover.xml:clover
+          debug: true
