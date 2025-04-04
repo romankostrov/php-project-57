@@ -12,7 +12,7 @@ install:
 	npm run build
 	make ide-helper
 
-install-test:
+install-prod:
 	composer install
 	cp -n .env.example.test .env
 	php artisan key:gen --ansi
@@ -21,6 +21,7 @@ install-test:
 	php artisan db:seed --force
 	npm ci
 	npm run build
+
 
 install-test:
 	composer install
