@@ -12,12 +12,13 @@ install:
 	npm run build
 	make ide-helper
 
-install-prod:
+install-test:
 	composer install
-	cp -n .env.example .env
+	cp -n .env.example.test .env
 	php artisan key:gen --ansi
-    touch database/database.sqlite
-	php artisan migrate:fresh --seed --force
+	touch database/database.sqlite
+	php artisan migrate --force
+	php artisan db:seed --force
 	npm ci
 	npm run build
 
