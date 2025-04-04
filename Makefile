@@ -16,6 +16,7 @@ install-prod:
 	composer install
 	cp -n .env.example .env
 	php artisan key:gen --ansi
+    touch database/database.sqlite # <--- Добавленная строка
 	php artisan migrate:fresh --seed --force
 	npm ci
 	npm run build
