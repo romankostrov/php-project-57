@@ -1,0 +1,15 @@
+includes:
+    - ./vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+
+    paths:
+        - app/
+        - src/
+
+    excludePaths:
+        - routes/*.php
+
+    # Level 0 is the highest level
+    level: 0
+    checkGenericClassInNonGenericObjectType: false
