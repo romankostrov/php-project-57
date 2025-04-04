@@ -3,7 +3,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/51fcb80ac08841c3a2e3/maintainability)](https://codeclimate.com/github/romankostrov/php-project-57/maintainability)
 
-
+[![Test Coverage](https://api.codeclimate.com/v1/badges/51fcb80ac08841c3a2e3/test_coverage)](https://codeclimate.com/github/romankostrov/php-project-57/test_coverage)
 
 ## Task manager
 Task Manager – система управления задачами, подобная http://www.redmine.org/. Она позволяет ставить задачи, назначать исполнителей и менять их статусы. Для работы с системой требуется регистрация и аутентификация.
