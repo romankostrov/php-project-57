@@ -13,13 +13,13 @@ install:
 	make ide-helper
 
 install-prod:
- 	composer install
- 	cp -n .env.example .env
- 	php artisan key:gen --ansi
- 	php artisan migrate --force
- 	php artisan db:seed --force
- 	npm ci
- 	npm run build
+	composer install
+	cp -n .env.example .env
+	php artisan key:gen --ansi
+	php artisan migrate --force
+	php artisan db:seed --force
+	npm ci
+	npm run build
 
 install-test:
 	composer install
