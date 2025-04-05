@@ -13,6 +13,7 @@ class ExampleTest extends TestCase
      */
     public function testThatTrueIsTrue(): void
     {
-        $this->assertTrue(true);
+        $value = true;
+        $this->assertTrue($value, 'Значение должно быть true');Ы
     }
 }
