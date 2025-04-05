@@ -17,7 +17,7 @@ class ExampleTest extends TestCase
         $this->assertTrue($valami);
     }
 
-    public function test_sajat_test(): void
+    public function testSajatTest(): void
     {
         $valami = 2;
         $this->assertGreaterThan(1,$valami);
