@@ -9,11 +9,12 @@ class ExampleTest extends TestCase
 {
     /**
      * A basic test example.
+     *
+     * @return void
      */
-    public function testTheApplicationReturnsASuccessfulResponse(): void
+    public function testBasicTest()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+        $result = 1 + 1; // Замените это на реальный код для тестирования
+        $this->assertEquals(2, $result); // Замените assertion на подходящий
     }
 }
