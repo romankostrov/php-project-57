@@ -14,6 +14,6 @@ class ExampleTest extends TestCase
     public function testThatTrueIsTrue(): void
     {
         $value = true;
-        $this->assertTrue($value, 'Значение должно быть true');Ы
+        $this->assertTrue($value, 'Значение должно быть true');
     }
 }
