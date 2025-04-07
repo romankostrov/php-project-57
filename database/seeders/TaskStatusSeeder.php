@@ -36,4 +36,4 @@ class TaskStatusSeeder extends Seeder
             }
         }
     }
-}Ц
+}
