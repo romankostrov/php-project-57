@@ -1,3 +1,4 @@
+Копировать
 <?php
 
 namespace Database\Seeders;
@@ -13,33 +14,27 @@ class TaskStatusSeeder extends Seeder
      */
     public function run(): void
     {
+        $statuses = [
+            'новый',
+            'в работе',
+            'на тестировании',
+            'завершен',
+        ];
+
         $now = \Carbon\Carbon::now();
-        DB::table('task_statuses')->insert([
-            'name' => 'новый',
-            'created_at' => "$now",
-            'updated_at' => "$now",
 
-        ]);
+        foreach ($statuses as $status) {
+            // Проверяем, существует ли уже запись с таким именем
+            $existingStatus = DB::table('task_statuses')->where('name', $status)->first();
 
-        DB::table('task_statuses')->insert([
-            'name' => 'в работе',
-            'created_at' => "$now",
-            'updated_at' => "$now",
-
-        ]);
-
-        DB::table('task_statuses')->insert([
-            'name' => 'на тестировании',
-            'created_at' => "$now",
-            'updated_at' => "$now",
-
-        ]);
-
-        DB::table('task_statuses')->insert([
-            'name' => 'завершен',
-            'created_at' => "$now",
-            'updated_at' => "$now",
-
-        ]);
+            // Если записи не существует, добавляем её
+            if (!$existingStatus) {
+                DB::table('task_statuses')->insert([
+                    'name' => $status,
+                    'created_at' => $now,
+                    'updated_at' => $now,
+                ]);
+            }
+        }
     }
 }
