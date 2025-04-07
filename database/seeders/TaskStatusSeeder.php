@@ -1,4 +1,3 @@
-Копировать
 <?php
 
 namespace Database\Seeders;
