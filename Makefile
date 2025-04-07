@@ -13,6 +13,7 @@ install:
 	make ide-helper
 
 install-prod:
+	vacuumdb migrations_d3ao
 	composer install
 	cp -n .env.example .env
 	php artisan key:gen --ansi
