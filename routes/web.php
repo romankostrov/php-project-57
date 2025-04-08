@@ -48,4 +48,9 @@ Route::resource('labels', LabelController::class)
         'show' => 'label.show',
     ]);
 
+Route::get('/token', function (Request $request) {
+    $token = $request->session()->token();
+    $token = csrf_token();
+});
+
 require __DIR__ . '/auth.php';
