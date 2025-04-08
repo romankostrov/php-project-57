@@ -15,7 +15,7 @@ return [
 
     'labels' => 'Labels',
     'createLabel' => 'Create label',
-    'label' => 'Метка',
+    'label' => 'Label',
     'id' => 'ID',
     'name' => 'Name',
     'description' => 'Description',

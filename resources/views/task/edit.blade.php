@@ -21,6 +21,7 @@
                         <div>
                             <textarea class="rounded border-gray-300 w-1/3 h-32" name="description" id="description">{{ $task->description }}</textarea>
                         </div>
+                        <x-input-error :messages="$errors->get('description')" class="mt-2" />
                         <div class="mt-2">
                             <label for="status_id">{{ __('task.status') }}</label>
                         </div>

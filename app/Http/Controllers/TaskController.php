@@ -68,7 +68,7 @@ class TaskController extends Controller
     {
         $dataFill = $request->validate([
             'name' => 'required|unique:tasks|max:20',
-            'description' => 'max:100',
+            'description' => 'required|unique:tasks|max:100',
             'status_id' => 'required',
             'assigned_to_id' => '',
         ], [''], ['name' => __('task.task')]);
@@ -128,7 +128,7 @@ class TaskController extends Controller
     {
         $dataFill = $request->validate([
             'name' => "required|max:20|unique:tasks,name,{$task->id}",
-            'description' => 'max:100',
+            'description' => "required|max:100|unique:tasks,name,{$task->id}",
             'status_id' => 'required',
             'assigned_to_id' => '',
         ], [''], ['name' => __('task.task')]);
