@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Label;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class LabelController extends Controller
 {
@@ -23,10 +23,13 @@ class LabelController extends Controller
      */
     public function create()
     {
-        if (Auth::check()) {
+        // Используем Gate для проверки разрешения 'create' для Label
+        if (Gate::allows('create', Label::class)) {
             return view('label.create');
         }
-        return abort(401);
+
+        // Если нет прав, возвращаем 403 Forbidden, а не 401 Unauthorized.
+        abort(403);
     }
 
     /**
@@ -51,10 +54,13 @@ class LabelController extends Controller
      */
     public function edit(Label $label)
     {
-        if (Auth::check()) {
+        // Используем Gate для проверки разрешения 'update' для конкретной метки.
+        if (Gate::allows('update', $label)) {
             return view('label.edit', ['label' => $label]);
         }
-        return abort(401);
+
+        // Если нет прав, возвращаем 403 Forbidden.
+        abort(403);
     }
 
     /**
@@ -78,7 +84,8 @@ class LabelController extends Controller
      */
     public function destroy(Label $label)
     {
-        if (Auth::check()) {
+        // Используем Gate для проверки разрешения 'delete' для конкретной метки.
+        if (Gate::allows('delete', $label)) {
             try {
                 $label->delete();
             } catch (\Exception $e) {
@@ -89,6 +96,8 @@ class LabelController extends Controller
             flash(__('label.flashDelete'))->success();
             return redirect()->route('label.index');
         }
-        return abort(401);
+
+        // Если нет прав, возвращаем 403 Forbidden.
+        abort(403);
     }
 }
